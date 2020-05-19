@@ -1,6 +1,11 @@
 
 package geneticalgorithmtest;
 
+import static java.lang.Float.parseFloat;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class Individuo {
     private int [] cromosomas;
     private int [] puntuacionHabilidades;
@@ -17,8 +22,8 @@ public class Individuo {
     }
     
     
-    public int[] getCromosomas() {
-        return cromosomas;
+    public int getCromosomas(int indice) {
+        return cromosomas[indice];
     }
 
     public void setCromosomas(int[] cromosomas) {
@@ -66,7 +71,14 @@ public class Individuo {
     }
 
     public void setPromedioHabilidades() {
-        this.promedioHabilidades = (this.getSumaHabilidades() / 7);
+        
+        float promedio = (float)this.getSumaHabilidades() / 7;
+
+        BigDecimal bd = new BigDecimal(promedio).setScale(2, RoundingMode.HALF_UP);
+        promedio = (float)bd.doubleValue();
+       
+        this.promedioHabilidades = promedio;
+       
     }
     
 }
