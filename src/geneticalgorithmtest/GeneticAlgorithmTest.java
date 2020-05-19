@@ -23,11 +23,19 @@ public class GeneticAlgorithmTest {
         
         individuos = new Individuo[numeroIndividuos];  
         hijos = new Individuo[numeroHijosCruce];
+        OperadoresGeneticos operadores = new OperadoresGeneticos();
         
         individuos = generarPoblacionInicial();
         
-        imprimirDatosIniciales();  
-        imprimirIndividuos();
+        imprimirDatosIniciales(); 
+        
+        for (int i = 0; i < 2; i++) {
+            imprimirIndividuos();
+            operadores.crearNuevaGeneracion(individuos);
+        }
+        
+         
+        
         
     }
     
