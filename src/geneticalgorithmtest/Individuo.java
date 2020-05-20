@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class Individuo {
+    private int id;
     private int [] cromosomas;
     private int [] puntuacionHabilidades;
     private float [] valorProbabilidadesCruce;
@@ -14,22 +15,38 @@ public class Individuo {
     private int sumaHabilidades;
     private float promedioHabilidades;
 
-    public Individuo(int[] cromosomas,int[] puntuacionHabilidades) {
+    public Individuo(int id, int[] cromosomas,int[] puntuacionHabilidades) {
+        this.id = id;
         this.cromosomas = cromosomas;
         this.puntuacionHabilidades = puntuacionHabilidades;
         this.setSumaHabilidades();
         this.setPromedioHabilidades();
     }
     
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public int getCromosomas(int indice) {
         return cromosomas[indice];
+    }
+    
+    public int[] getCromosomas() {
+        return cromosomas;
     }
 
     public void setCromosomas(int[] cromosomas) {
         this.cromosomas = cromosomas;
     }
 
+    public void setCromosoma(int indice, int valor) {
+        this.cromosomas[indice] = valor;
+    }
+    
     public int[] getPuntuacionHabilidades() {
         return puntuacionHabilidades;
     }

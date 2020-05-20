@@ -31,6 +31,7 @@ public class GeneticAlgorithmTest {
         
         for (int i = 0; i < 2; i++) {
             imprimirIndividuos();
+            System.out.println("--------------------------------");
             operadores.crearNuevaGeneracion(individuos);
         }
         
@@ -90,15 +91,17 @@ public class GeneticAlgorithmTest {
     
     public static Individuo[] generarPoblacionInicial() {
         Individuo[] individuosGenerados = new Individuo[numeroIndividuos];
+        int idIndividuo = 0;
         
         for (int i = 0; i < numeroIndividuos; i++) {
-            individuosGenerados[i] = generarIndividuo();
+            individuosGenerados[i] = generarIndividuo(idIndividuo);
+            idIndividuo++;
         }
         
         return individuosGenerados;
     }
     
-    public static Individuo generarIndividuo(){ 
+    public static Individuo generarIndividuo(int id){ 
         int [] cromosomas = new int [numeroCromosomas];
         int [] habilidades = new int [numeroCromosomas];
         
@@ -114,7 +117,7 @@ public class GeneticAlgorithmTest {
             
         } 
         
-        Individuo futbolista = new Individuo(cromosomas,habilidades);
+        Individuo futbolista = new Individuo(id,cromosomas,habilidades);
         
         return futbolista;
     }
@@ -129,11 +132,4 @@ public class GeneticAlgorithmTest {
         
         return 0;
     } 
-    
-    public static float valoresAleatoriosReales(String tipoValor){
-        //if
-        return 0.0f;
-    }    
-    
-    
 }
