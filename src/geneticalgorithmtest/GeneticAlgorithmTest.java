@@ -14,6 +14,7 @@ public class GeneticAlgorithmTest {
     public static int numeroIndividuos = 11;
     public static int numeroCromosomas = 7;
     public static int numeroHijosCruce = 2;
+    public static int numeroGeneracion = 0;
     
     public static Individuo [] individuos;
     public static Individuo [] hijos;
@@ -25,19 +26,37 @@ public class GeneticAlgorithmTest {
         hijos = new Individuo[numeroHijosCruce];
         OperadoresGeneticos operadores = new OperadoresGeneticos();
         
+        int contadorFutbolistasProfesionales = 0;
+        
+        
         individuos = generarPoblacionInicial();
         
         imprimirDatosIniciales(); 
         
-        for (int i = 0; i < 2; i++) {
+        do {
+          //for (int i = 0; i < 100; i++) {
+            
+        
+  
+            contadorFutbolistasProfesionales = 0;
+           
             imprimirIndividuos();
-            System.out.println("--------------------------------");
             operadores.crearNuevaGeneracion(individuos);
-        }
+            
+            numeroGeneracion++;
+            
+            for (int j = 0; j < numeroIndividuos; j++) {
+                if(75 < individuos[j].getPromedioHabilidades()){
+                    contadorFutbolistasProfesionales++;
+                }
+            }
+          //}       
+        } while(contadorFutbolistasProfesionales != 11);
         
-         
+        imprimirIndividuos();
         
-        
+        System.out.println();
+        System.out.println("\n/================ GENERACION " + (numeroGeneracion+1)+ " ES LAS FINAL ================/\n");
     }
     
     
@@ -65,15 +84,18 @@ public class GeneticAlgorithmTest {
     }
     
     public static void imprimirIndividuos(){
-        System.out.println("\n/*** 1.- Individuos de la generación  ***/\n");
+        System.out.println("\n/================ GENERACIÓN "+(numeroGeneracion+1)+" ================/\n");
+        System.out.println("\n/*** 1.- Individuos de la generación " + numeroGeneraciones + " ***/\n");
         System.out.println("");
         System.out.println("\t\tvl\t tr\t rg\t df\t ps\t fs\t at\t");
         
         for (int i = 0; i < numeroIndividuos; i++) {
             
+            System.out.print("id: " + individuos[i].getId() + "\n");
             System.out.print("individuo " + (i+1) + ":\t");
             
             for (int j = 0; j < numeroCromosomas; j++) {
+                
                System.out.print(individuos[i].getCromosoma(j) + "\t");   
             }
             
@@ -110,9 +132,9 @@ public class GeneticAlgorithmTest {
             cromosomas[i] = valorCromosoma;
             
             if (valorCromosoma == 1) {
-                habilidades[i] = valoresAleatoriosEnteros("valorHabillidades");
+                habilidades[i] = valoresAleatoriosEnteros("valorHabillidades");//(int) (Math.random() * (100-75+1)+ 75);valoresAleatoriosEnteros("valorHabillidades");
             } else {
-                habilidades[i] = 0;
+                habilidades[i] = 0; //(int) (Math.random() * ) + 1;
             }  
             
         } 
