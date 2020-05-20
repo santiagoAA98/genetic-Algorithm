@@ -31,16 +31,16 @@ public class Individuo {
         this.id = id;
     }
     
-    public int getCromosomas(int indice) {
-        return cromosomas[indice];
-    }
-    
     public int[] getCromosomas() {
         return cromosomas;
     }
 
     public void setCromosomas(int[] cromosomas) {
         this.cromosomas = cromosomas;
+    }
+    
+    public int getCromosoma(int indice) {
+        return cromosomas[indice];
     }
 
     public void setCromosoma(int indice, int valor) {
@@ -53,6 +53,14 @@ public class Individuo {
 
     public void setPuntuacionHabilidades(int[] puntuacionHabilidades) {
         this.puntuacionHabilidades = puntuacionHabilidades;
+    }
+    
+    public int getPuntuacionHabilidad(int indicie) {
+        return puntuacionHabilidades[indicie];
+    }
+    
+    public void setPuntuaionHabilidad(int indice, int valor){
+         this.puntuacionHabilidades[indice] = valor;
     }
 
     public float[] getValorProbabilidadesCruce() {
@@ -77,7 +85,10 @@ public class Individuo {
         return sumaHabilidades;
     }
 
-    public void setSumaHabilidades() {   
+    public void setSumaHabilidades() { 
+        
+        this.sumaHabilidades = 0;
+        
         for (int i = 0; i < puntuacionHabilidades.length ; i++) {
             this.sumaHabilidades = sumaHabilidades + puntuacionHabilidades[i];
         }

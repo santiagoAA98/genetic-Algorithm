@@ -74,7 +74,7 @@ public class GeneticAlgorithmTest {
             System.out.print("individuo " + (i+1) + ":\t");
             
             for (int j = 0; j < numeroCromosomas; j++) {
-               System.out.print(individuos[i].getCromosomas(j) + "\t");   
+               System.out.print(individuos[i].getCromosoma(j) + "\t");   
             }
             
             System.out.println();
