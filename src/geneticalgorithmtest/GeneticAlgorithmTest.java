@@ -1,16 +1,17 @@
 
 package geneticalgorithmtest;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  *
  * @author Santiago Arenas
  */
 public class GeneticAlgorithmTest {
     
-    public static float probabilidadSelecccion = 0.6f;
     public static float probabilidadCruce = 0.7f;
     public static float probabilidadMutacion = 0.8f;
-    public static int numeroGeneraciones = 100;
     public static int numeroIndividuos = 11;
     public static int numeroCromosomas = 7;
     public static int numeroHijosCruce = 2;
@@ -23,7 +24,6 @@ public class GeneticAlgorithmTest {
     public static void main(String[] args) {
         
         individuos = new Individuo[numeroIndividuos];  
-        hijos = new Individuo[numeroHijosCruce];
         OperadoresGeneticos operadores = new OperadoresGeneticos();
         
         int contadorFutbolistasProfesionales = 0;
@@ -31,13 +31,9 @@ public class GeneticAlgorithmTest {
         
         individuos = generarPoblacionInicial();
         
-        imprimirDatosIniciales(); 
+        imprimirDatosIniciales();    
         
-        do {
-          //for (int i = 0; i < 100; i++) {
-            
-        
-  
+        do { 
             contadorFutbolistasProfesionales = 0;
            
             imprimirIndividuos();
@@ -50,13 +46,13 @@ public class GeneticAlgorithmTest {
                     contadorFutbolistasProfesionales++;
                 }
             }
-          //}       
+     
         } while(contadorFutbolistasProfesionales != 11);
         
         imprimirIndividuos();
         
         System.out.println();
-        System.out.println("\n/================ GENERACION " + (numeroGeneracion+1)+ " ES LAS FINAL ================/\n");
+        System.out.println("\n/================ GENERACION " + (numeroGeneracion+1)+ " ES LA FINAL ================/\n");
     }
     
     
@@ -69,7 +65,7 @@ public class GeneticAlgorithmTest {
         System.out.println("Mutación: heuristica");
         System.out.println("Probabilidad de cruce: " + (probabilidadCruce*100) + "%");
         System.out.println("probabilidad de mutación: " + (probabilidadMutacion*100) + "%");
-        System.out.println("Criterio de parada: " + numeroGeneraciones + " generaciones");
+        System.out.println("Criterio de parada: todos los individuos tengas un valor promedio mayor a 75");
         System.out.println("\nHABILIDADES: \n");
         
         System.out.println("vl: Velocidad");
@@ -85,13 +81,12 @@ public class GeneticAlgorithmTest {
     
     public static void imprimirIndividuos(){
         System.out.println("\n/================ GENERACIÓN "+(numeroGeneracion+1)+" ================/\n");
-        System.out.println("\n/*** 1.- Individuos de la generación " + numeroGeneraciones + " ***/\n");
+        System.out.println("\n/********************** Individuos de la generación " + (numeroGeneracion+1) + " **********************/\n");
         System.out.println("");
         System.out.println("\t\tvl\t tr\t rg\t df\t ps\t fs\t at\t");
         
         for (int i = 0; i < numeroIndividuos; i++) {
             
-            System.out.print("id: " + individuos[i].getId() + "\n");
             System.out.print("individuo " + (i+1) + ":\t");
             
             for (int j = 0; j < numeroCromosomas; j++) {
@@ -132,9 +127,9 @@ public class GeneticAlgorithmTest {
             cromosomas[i] = valorCromosoma;
             
             if (valorCromosoma == 1) {
-                habilidades[i] = valoresAleatoriosEnteros("valorHabillidades");//(int) (Math.random() * (100-75+1)+ 75);valoresAleatoriosEnteros("valorHabillidades");
+                habilidades[i] = valoresAleatoriosEnteros("valorHabillidades");//
             } else {
-                habilidades[i] = 0; //(int) (Math.random() * ) + 1;
+                habilidades[i] = 0;
             }  
             
         } 
@@ -154,4 +149,9 @@ public class GeneticAlgorithmTest {
         
         return 0;
     } 
+    
+    public static float valoresAleatoriosReales() {
+        BigDecimal bd = new BigDecimal((Math.random() * 1)).setScale(2, RoundingMode.HALF_UP);
+        return (float) bd.doubleValue();
+    }
 }
