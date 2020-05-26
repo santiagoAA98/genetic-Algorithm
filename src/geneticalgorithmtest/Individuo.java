@@ -67,7 +67,6 @@ public class Individuo {
         return valorProbabilidadesCruce;
     }
 
-    //editar metodo para generar valores de vector aleatoriamente.
     public void setValorProbabilidadesCruce(float[] valorProbabilidadesCruce) {
         this.valorProbabilidadesCruce = valorProbabilidadesCruce;
     }
@@ -76,7 +75,6 @@ public class Individuo {
         return valorProbabilidadesMutacion;
     }
     
-    //editar metodo para generar valores de vector aleatoriamente.
     public void setValorProbabilidadesMutacion(float[] valorProbabilidadesMutacion) {
         this.valorProbabilidadesMutacion = valorProbabilidadesMutacion;
     }
