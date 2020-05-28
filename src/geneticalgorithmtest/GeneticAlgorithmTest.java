@@ -6,7 +6,8 @@ import java.math.RoundingMode;
 
 /**
  *
- * @author Santiago Arenas
+ * @author Santiago Arenas Agudelo
+ * @author Alejandro Mesa Ramirez
  */
 public class GeneticAlgorithmTest {
     
@@ -60,7 +61,7 @@ public class GeneticAlgorithmTest {
         System.out.println("Poblacion: Futbolistas con aptitudes para ser profesionales y formar parte del equipo");
         System.out.println("Numero de individuos: " + numeroIndividuos);
         System.out.println("Función fitness: Σ habilidad");
-        System.out.println("Selección: Emparejamiento + Heurística");
+        System.out.println("Selección: Heurística");
         System.out.println("Cruce: 1 Punto");
         System.out.println("Mutación: heuristica");
         System.out.println("Probabilidad de cruce: " + (probabilidadCruce*100) + "%");
